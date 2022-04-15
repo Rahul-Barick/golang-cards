@@ -1,0 +1,63 @@
+#Cards Project Details
+
+1. newDeck - Create a list of playing cards. Essentially an array of strings
+
+2. print - Logout contents of a deck of cards
+
+3. Shuffle - Shuffle's all card in a deck
+
+4. Deal - Create a "hand" of cards
+
+5. saveToFile - Save a list of cards to a file on the local machine
+
+6. newDeckFromFile - Loads a list of cards from the local machine
+
+Documentation Link
+https://go.dev/
+Write File - https://pkg.go.dev/io/ioutil@go1.18.1#WriteFile
+
+Examples
+
+1. Type conversion
+
+greeting := "Hi there!"
+fmt.Println([]byte(greeting))
+
+2. ioutil.WriteFile ---> 3rd param permissions=0666
+Anyone can read and write a file
+
+3. Learning Flow main.go
+================================================================
+Stage #1 Use for loop and use receiver function
+cards := newDeck()
+cards.print()
+
+Note: Slice Declaration
+fruits := []string{"Apple", "Mango", "Pineapple", "Kiwi"}
+================================================================
+Stage #2 How to use Slice range
+cards := newDeck()
+hand, remainingCards := deal(cards, 5)
+hand.print()
+remainingCards.print()
+================================================================
+Stage #3 Save to local harddrive
+cards := newDeck()
+cards.saveToFile("my_cards")
+================================================================
+Stage #4 Read a file from local harddrive
+cards := newDeckFromFile("my_cards")
+cards.print()
+================================================================
+Stage #5 Random Number Generation
+rand.Intn(100)
+Issue is generates same value
+================================================================
+Stage #6
+Testing I/O file
+To avoid unnecessary crash with files saveToFile and ReadFromFile
+if another time you run test case it might break
+
+So cleanup file is necessary
+os.Remove("_decktesting")
+
